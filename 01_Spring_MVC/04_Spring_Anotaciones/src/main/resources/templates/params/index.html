@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title th:text="${titulo}"></title>
+    </head>
+    <body>
+        <h1 th:text="${titulo}"></h1>
+        <ul>
+            <li>
+                <a th:href="@{/params/string(texto='Hola Adrián')}">/params/string?texto=Hola Adrián</a>
+            </li>
+            <li>
+                <a th:href="@{/params/string(texto='Hola que tal John!')}">/params/string?texto=Hola que tal John!</a>
+            </li>
+            <li>
+                <a th:href="@{/params/mix-params(saludo='¿Cómo estás Adrián?', numero=9)}">/params/mix-params?saludo=¿Cómo estás Adrián?&numero=9</a>
+            </li>
+            <li>
+                <a th:href="@{/params/mix-params-request(saludo='¿Cómo estás Adrián Request?', numero=19)}">/params/mix-params-request?saludo=¿Cómo estás Adrián Request?&numero=19</a>
+            </li>
+        </ul>
+    </body>
+</html>
