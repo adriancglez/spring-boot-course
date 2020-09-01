@@ -1,6 +1,7 @@
 package com.smoothiemx.web.app.controllers;
 
 import com.smoothiemx.web.app.models.Usuario;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -18,10 +19,19 @@ import java.util.Map;
 @RequestMapping("/app")
 public class IndexController {
 
+    @Value("${texto.indexcontroller.index.titulo}")
+    private String titulo;
+
+    @Value("${texto.indexcontroller.perfil.titulo}")
+    private String perfil;
+
+    @Value("${texto.indexcontroller.listado.titulo}")
+    private String listar;
+
     //@GetMapping({"/","/index","/home"})
     @GetMapping("")
     public String index(Model model) {
-        model.addAttribute("titulo", "¡Hola Spring Framework con Model");
+        model.addAttribute("titulo", titulo);
         return "index";
     }
 
@@ -52,7 +62,7 @@ public class IndexController {
         usuario.setApellido("González");
         usuario.setEmail("adrian@gmail.com");
 
-        model.addAttribute("titulo", "Perfil del Usuario ".concat(usuario.getNombre()));
+        model.addAttribute("titulo", perfil.concat(usuario.getNombre()));
         model.addAttribute("usuario", usuario);
 
         return "perfil";
@@ -61,7 +71,7 @@ public class IndexController {
     @RequestMapping("/listar")
     public String listar(Model model) {
 
-        model.addAttribute("titulo", "Listado de usuarios");
+        model.addAttribute("titulo", listar);
 
         return "listar";
     }
